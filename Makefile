@@ -27,15 +27,18 @@ $(NAME): $(LIBFT_EXEC) $(OBJS)
 
 $(LIBFT_EXEC):
 		@echo "Compiling libft"
-		${MAKE} -C $(LIBFT_DIR)
+		@${MAKE} -C $(LIBFT_DIR)
+		@echo "Libft compiled"
 
 clean:
-	rm -rf $(OBJS)
+	@rm -rf obj
 	${MAKE} -C $(LIBFT_DIR) fclean
+	@echo "Objects cleaned"
 
 fclean:
-	rm -rf $(OBJS) $(NAME)
+	@rm -rf obj $(NAME)
 	${MAKE} -C $(LIBFT_DIR) fclean
+	@echo "${NAME} and objects cleaned"
 
 re: fclean all
 

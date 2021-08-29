@@ -6,34 +6,36 @@
 #    By: fmeira <fmeira@student.42lisboa.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/18 20:38:48 by fmeira            #+#    #+#              #
-#    Updated: 2021/07/23 17:58:18 by fmeira           ###   ########.fr        #
+#    Updated: 2021/08/29 20:32:06 by fmeira           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # -*- MakeFile -*-
 
 NAME = libft.a
-HEADER = ../inc/libft.h
 SRC = ${wildcard ft_*.c}
 OBJ = ${SRC:.c=.o}
 FLAGS = -Wall -Wextra -Werror
 
 ${NAME}: ${OBJ}
-	mkdir -p ../bin && ar -rs ${NAME} ${OBJ} && mv $(NAME) ../bin
+	@mkdir -p ../bin
+	@ar -rs ${NAME} ${OBJ}
+	@mv $(NAME) ../bin
 
 %.o: %.c
-	gcc ${FLAGS} -c -o $@ $<
+	@gcc ${FLAGS} -c -o $@ $<
 
 all: ${NAME}
 
 bonus: ${NAME}
 
 clean:
-	rm -f ${OBJ}
+	@rm -f ${OBJ}
 
 .PHONY: clean
 fclean: clean
-	rm -f ../bin/${NAME}
+	@rm -f ../bin/${NAME}
+	@echo "Libft cleaned"
 
 re: fclean all
 

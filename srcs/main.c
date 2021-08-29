@@ -7,7 +7,12 @@ int	main(int ac, char** av)
 	char	**map;
 
 	mlx_vars = NULL;
+	img = NULL;
 
-	map = parse_map(av[1]);
-	init_window(mlx_vars, img);
+	if (ac == 2)
+	{
+		map = parse_map(av[1]);
+		init_window(mlx_vars, img);
+	}
+	return (0);
 }

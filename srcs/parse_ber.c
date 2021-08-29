@@ -1,5 +1,8 @@
 #include "../includes/so_long.h"
 
+static t_bool	not_valid(char **line, int i)
+{}
+
 char**	parse_map(char* ber)
 {
 	char**	line;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fmeira <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: fmeira <fmeira@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 20:31:55 by fmeira            #+#    #+#             */
-/*   Updated: 2021/03/15 19:59:31 by fmeira           ###   ########.fr       */
+/*   Updated: 2021/08/29 23:14:13 by fmeira           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@
 # include <unistd.h>
 # include <limits.h>
 
+# ifndef BUFFER_SIZE
+# define BUFFER_SIZE 1
+# endif
+
 # ifndef OPEN_MAX
 #  define OPEN_MAX	10240
 # endif
@@ -28,5 +32,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strdup(const char *s1);
 char	*ft_strjoin(char const *s1, char const *s2);
 size_t	ft_strlen(const char *str);
+int		divide_n_conquer(char **saved, char **line);
 
 #endif

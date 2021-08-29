@@ -19,25 +19,25 @@ LINKS 		= -I $(LIBFT_DIR) -L $(LIBFT_DIR) \
 all: $(NAME)
 
 $(NAME): $(LIBFT_EXEC) $(OBJS)
-		@echo "Compiling ${NAME}"
-		@gcc $(CFLAGS) $(LIBFT_EXEC) $(OBJS) -o $(NAME) $(LINKS)
-		@mkdir -p obj
-		@mv ${OBJS} obj
-		@echo "Ready to use!"
+	@echo "Compiling ${NAME}"
+	@gcc $(CFLAGS) $(LIBFT_EXEC) $(OBJS) -o $(NAME) $(LINKS)
+	@mkdir -p obj
+	@mv ${OBJS} obj
+	@echo "Ready to use!"
 
 $(LIBFT_EXEC):
-		@echo "Compiling libft"
-		@${MAKE} -C $(LIBFT_DIR)
-		@echo "Libft compiled"
+	@echo "Compiling libft"
+	@${MAKE} -C $(LIBFT_DIR)
+	@echo "Libft compiled"
 
 clean:
 	@rm -rf obj
-	${MAKE} -C $(LIBFT_DIR) fclean
+	@${MAKE} -C $(LIBFT_DIR) fclean
 	@echo "Objects cleaned"
 
 fclean:
 	@rm -rf obj $(NAME)
-	${MAKE} -C $(LIBFT_DIR) fclean
+	@${MAKE} -C $(LIBFT_DIR) fclean
 	@echo "${NAME} and objects cleaned"
 
 re: fclean all

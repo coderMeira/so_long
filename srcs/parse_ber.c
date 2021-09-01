@@ -58,33 +58,31 @@ static void	check_letters(t_environment *env, int i, int len)
 			if (env->map[j][k] != '1' && env->map[j][k] != 'C' &&
 				env->map[j][k] != 'E' && env->map[j][k] != '0' &&
 				env->map[j][k] != 'P')
-				terminate("only 5 possible characters: 0, 1, C, E, P");
+				die(env, i, "only 5 possible characters: 0, 1, C, E, P");
 			//if (env->map[j][k] == 'C')
 				//add to C
 			if (env->map[j][k] == 'E')
 			{
 				if (env->E->count)
 				{
-					free_struct(env);
-					terminate("only one exit allowed");
+					die(env, i, "only one exit allowed");
 				}
-				env->E = set_pos(env->map, j, k);
+				env->E = set_pos(j, k);
 			}
 			if (env->map[j][k] == 'P')
 			{
 				if (env->P->count)
 				{
-					free_struct(env);
-					terminate("only one player allowed");
+					die(env, i, "only one player allowed");
 				}
-				env->P = set_pos(env->map, j, k);
+				env->P = set_pos(j, k);
 			}
 			k++;
 		}
 		j++;
 	}
 	if ((C + E + P) < 3)
-		terminate("map needs to have at least 1 'C', 1 'E' and 1 'P'");
+		die(env, i, "map needs to have at least 1 'C', 1 'E' and 1 'P'");
 }
 
 static void	validate_map(t_environment *env, int i)

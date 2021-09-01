@@ -20,9 +20,9 @@ all: $(NAME)
 
 $(NAME): $(LIBFT_EXEC) $(OBJS)
 	@echo "Compiling ${NAME}"
-	@gcc $(CFLAGS) $(LIBFT_EXEC) $(OBJS) -o $(NAME) $(LINKS)
-	@mkdir -p obj
-	@mv ${OBJS} obj
+	gcc $(CFLAGS) $(LIBFT_EXEC) $(OBJS) -o $(NAME) $(LINKS)
+	mkdir -p obj
+	mv ${OBJS} obj
 	@echo "Ready to use!"
 
 $(LIBFT_EXEC):
@@ -31,12 +31,12 @@ $(LIBFT_EXEC):
 	@echo "Libft compiled"
 
 clean:
-	@rm -rf obj
+	@rm -rf obj ${OBJS}
 	@${MAKE} -C $(LIBFT_DIR) fclean
 	@echo "Objects cleaned"
 
 fclean:
-	@rm -rf obj $(NAME)
+	@rm -rf obj ${OBJS} $(NAME)
 	@${MAKE} -C $(LIBFT_DIR) fclean
 	@echo "${NAME} and objects cleaned"
 

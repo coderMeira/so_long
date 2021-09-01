@@ -22,8 +22,7 @@ typedef struct	s_vars {
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	init_window(t_vars *mlx_vars, t_data* img);
 
-char**	parse_map(char* ber);
-
-
+char**		parse_map(char* ber);
+int 		get_next_line(int fd, char **line);
 
 #endif

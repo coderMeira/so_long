@@ -50,28 +50,32 @@ static void	check_letters(char **line, int i, int len)
 	int k;
 	int	C;
 	int E;
+	int P;
 
 	j = 0;
 	C = 0;
 	E = 0;
+	P = 0;
 	while (j < i)
 	{
 		k = 0;
 		while (k < len)
 		{
 			if (line[j][k] != '1' && line[j][k] != 'C' &&
-			line[j][k] != 'E' && line[j][k] != '0')
-				terminate("only 5 possible characters: 0, 1, C, E");
+			line[j][k] != 'E' && line[j][k] != '0' && line[j][k] != 'P')
+				terminate("only 5 possible characters: 0, 1, C, E, P");
 			if (line[j][k] == 'C')
 				C = 1;
 			if (line[j][k] == 'E')
 				E = 1;
+			if (line[j][k] == 'P')
+				P = 1;
 			k++;
 		}
 		j++;
 	}
-	if ((C == 0) || (E == 0))
-		terminate("map needs to have at least 1 'C' and 1 'E'");
+	if ((C + E + P) < 3)
+		terminate("map needs to have at least 1 'C', 1 'E' and 1 'P'");
 }
 
 static void	validate_map(char **line, int i)

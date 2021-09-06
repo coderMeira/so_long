@@ -8,8 +8,8 @@
 
 typedef struct	s_element
 {
-	int	*pos;
-	int	count;
+	int		*pos;
+	t_bool	is_set;
 }				t_element;
 
 typedef struct	s_c_list
@@ -26,6 +26,7 @@ typedef struct	s_environment
 	char		**map;
 	int			c_count;
 	int			mov_count;
+	int			map_size;
 }				t_environment;
 
 
@@ -42,13 +43,15 @@ typedef struct	s_vars {
 	void	*win;
 }				t_vars;
 
-t_element		*init_element(void);
+t_element		*init_element(int j, int k, t_environment *env);
 t_environment	*init_env(void);
+t_c_list		*init_C(t_environment *env);
+void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void			init_window(t_vars *mlx_vars, t_data* img);
 
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
-void	init_window(t_vars *mlx_vars, t_data* img);
+void	add_to_C(t_c_list *C, t_environment *env, int j, int k)
 
-char**		parse_map(char* ber, t_environment*	env);
-int 		get_next_line(int fd, char **line);
+char**			parse_map(char* ber, t_environment*	env);
+int 			get_next_line(int fd, char **line);
 
 #endif

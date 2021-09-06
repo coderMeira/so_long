@@ -3,10 +3,21 @@
 
 void	free_c_list(t_c_list *list)
 {
+	t_c_list	*current;
+	t_c_list	*delete;
 
+	current = list;
+	while (current)
+	{
+		delete = current;
+		current = current->next;
+		free(delete->pos);
+		free(delete);
+	}
+	free(list);
 }
 
-void	free_struct(t_environment *env, int i)
+void	free_struct(t_environment *env)
 {
 	if (env)
 	{
@@ -17,14 +28,17 @@ void	free_struct(t_environment *env, int i)
 		if (env->C)
 			free_c_list(env->C);
 		if (env->map)
-			free_map(env->map);
+		{
+			while (env->map_size >= 0)
+				free(env->map[env->map_size--]);
+		}
 	free(env);
 	env = NULL;
 	}
 }
 
-void	die(t_environment *env, int i, char *message)
+void	die(t_environment *env, char *message)
 {
-	free_struct(env, i);
+	free_struct(env);
 	terminate(message);
 }

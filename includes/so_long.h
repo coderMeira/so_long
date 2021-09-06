@@ -45,7 +45,7 @@ typedef struct	s_vars {
 
 t_element		*init_element(int j, int k, t_environment *env);
 t_environment	*init_env(void);
-t_c_list		*init_C(t_environment *env);
+t_c_list		*init_C_elem(t_environment *env, int j, int k);
 void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void			init_window(t_vars *mlx_vars, t_data* img);
 

@@ -17,7 +17,7 @@ void	add_to_C(t_c_list *C, t_environment *env, int j, int k)
 {
 	t_c_list	*tail;
 
-	tail = init_C(env, j, k);
+	tail = init_C_elem(env, j, k);
 	if (env)
 	{
 		if (C)

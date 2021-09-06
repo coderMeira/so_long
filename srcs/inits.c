@@ -1,6 +1,6 @@
 #include "../includes/so_long.h"
 
-t_c_list	*init_C(t_environment *env, int j, int k)
+t_c_list	*init_C_elem(t_environment *env, int j, int k)
 {
 	t_c_list	*elem;
 

@@ -6,6 +6,9 @@
 # include <stdio.h>
 # include "../libs/libft/inc/libft.h"
 
+# define ASSET_HEIGHT	100
+# define ASSET_WIDTH	100
+
 typedef struct	s_vars {
 	void	*mlx;
 	void	*win;
@@ -17,6 +20,8 @@ typedef struct	s_img {
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
+	int		img_width;
+	int		img_height;
 	t_vars	mlx_vars;
 }				t_img;
 
@@ -29,18 +34,18 @@ typedef struct	s_environment
 	int			E_count;
 	int			C_count;
 	int			mov_count;
-	int			map_size;
-	t_img		player;
-	t_img		exit;
-	t_img		consumable;
-	t_img		wall;
-	t_img		floor;
+	int			x_size;
+	int			y_size;
+	t_img		i_P;
+	t_img		i_E;
+	t_img		i_C;
+	t_img		i_1;
+	t_img		i_0;
 }				t_environment;
 
 //INITS
 t_environment	*init_env(void);
-void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
-void			init_window(t_vars *mlx_vars, t_data* img);
+void			init_window(t_environment *env);
 
 //FREE
 void			die(t_environment *env, char *message);

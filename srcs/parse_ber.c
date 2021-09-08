@@ -6,14 +6,14 @@ static void	check_if_rectangle(t_environment *env, int len)
 	int	this_len;
 
 	j = 0;
-	while (j < env->map_size)
+	while (j < env->x_size)
 	{
 		this_len = ft_strlen(env->map[j]);
 		if (this_len != len)
 			die(env, "map is not a rectangle");
 		j++;
 	}
-	if (len <= env->map_size)
+	if (len <= env->x_size)
 		die(env, "map is not a rectangle");
 }
 
@@ -29,7 +29,7 @@ static void	check_borders(t_environment *env, int len)
 		j++;
 	}
 	j = 0;
-	while (j < env->map_size)
+	while (j < env->x_size)
 	{
 		if (env->map[j][0] != '1' || env->map[j][len - 1] != '1')
 			die(env, "one of the middle borders is not closed");
@@ -38,7 +38,7 @@ static void	check_borders(t_environment *env, int len)
 	j = 0;
 	while (j < len)
 	{
-		if (env->map[env->map_size - 1][j] != '1')
+		if (env->map[env->x_size - 1][j] != '1')
 			die(env, "botton border not closed");
 		j++;
 	}
@@ -57,7 +57,7 @@ static void	parse_letters(t_environment *env, int len)
 	int		k;
 
 	j = 0;
-	while (j < env->map_size)
+	while (j < env->x_size)
 	{
 		k = 0;
 		while (k < len)
@@ -75,6 +75,7 @@ static void	parse_letters(t_environment *env, int len)
 		write(1, &("\n"), 1);
 		j++;
 	}
+	env->y_size = j;
 	if (!(env->C_count) || !(env->E_count) || env->P_count > 1)
 		die(env, "map needs to have at least 1 'C', 1 'E', and 1 'P' max");
 }
@@ -100,7 +101,7 @@ void	parse_map(char* ber, t_environment*	env)
 		}
 	}
 	free_slice(env->map, i, 1000);
-	env->map_size = i;
+	env->x_size = i;
 	close(fd);
 	check_if_rectangle(env,ft_strlen(env->map[0]));
 	check_borders(env,ft_strlen(env->map[0]));

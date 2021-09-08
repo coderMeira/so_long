@@ -6,8 +6,8 @@ void	free_struct(t_environment *env)
 	{
 		if (env->map)
 		{
-			while (env->map_size >= 0)
-				free(env->map[env->map_size--]);
+			while (env->x_size >= 0)
+				free(env->map[env->x_size--]);
 		}
 	free(env);
 	env = NULL;

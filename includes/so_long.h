@@ -8,6 +8,11 @@
 
 # define ASSET_HEIGHT	100
 # define ASSET_WIDTH	100
+# define ESC			53
+# define W		 		13
+# define S		 		1
+# define D			 	2
+# define A				0
 
 typedef struct	s_vars {
 	void	*mlx;
@@ -36,6 +41,10 @@ typedef struct	s_environment
 	int			mov_count;
 	int			x_size;
 	int			y_size;
+	int			p_x;
+	int			p_y;
+	int			new_p_x;
+	int			new_p_y;
 	t_img		i_1;
 	t_img		i_0;
 	t_img		i_P;
@@ -56,6 +65,8 @@ void			parse_map(char* ber, t_environment*	env);
 int 			get_next_line(int fd, char **line);
 
 //WINDOW
-void start_window(t_environment *env);
+void			start_window(t_environment *env);
+int				move(int key_code, t_environment *env);
+
 
 #endif

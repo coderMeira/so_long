@@ -14,6 +14,10 @@ t_environment	*init_env(void)
 	env->mov_count = 0;
 	env->x_size = 0;
 	env->y_size = 0;
+	env->p_x = 0;
+	env->p_y = 0;
+	env->new_p_x = 0;
+	env->new_p_y = 0;
 	// env->player = 0;
 	// env->exit = 0;
 	// env->consumable = 0;

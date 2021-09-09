@@ -8,10 +8,12 @@ static void	check_if_rectangle(t_environment *env)
 	j = 0;
 	while (j < env->y_size)
 	{
+		//write(1, &(env->map[j]), ft_strlen(env->map[j]));
 		this_len = ft_strlen(env->map[j]);
 		if (this_len != env->x_size)
 			die(env, "map is not a rectangle");
 		j++;
+		//write(1, &("\n"), 1);
 	}
 }
 
@@ -43,8 +45,13 @@ static void	check_borders(t_environment *env)
 	}
 }
 
-static void	check_letter(t_environment *env, char letter)
+static void	check_letter(t_environment *env, char letter, int j, int k)
 {
+	if (letter == 'P')
+	{
+		env->p_x = k;
+		env->p_y = j;
+	}
 	if (letter != '1' && letter != 'C' &&
 		letter != 'E' && letter != '0' && letter != 'P')
 			die(env, "only 5 possible characters: 0, 1, C, E, P");
@@ -61,8 +68,7 @@ static void	parse_letters(t_environment *env)
 		k = 0;
 		while (k < env->x_size)
 		{
-			write(1, &(env->map[j][k]), 1);
-			check_letter(env, env->map[j][k]);
+			check_letter(env, env->map[j][k], j, k);
 			if (env->map[j][k] == 'C')
 				env->C_count++;
 			else if (env->map[j][k] == 'E')
@@ -71,7 +77,6 @@ static void	parse_letters(t_environment *env)
 				env->P_count++;
 			k++;
 		}
-		write(1, &("\n"), 1);
 		j++;
 	}
 	env->y_size = j;

@@ -1,44 +1,43 @@
 #include "../includes/so_long.h"
 
-static void	check_if_rectangle(t_environment *env, int len)
+static void	check_if_rectangle(t_environment *env)
 {
 	int	j;
 	int	this_len;
 
 	j = 0;
-	while (j < env->x_size)
+	while (j < env->y_size)
 	{
 		this_len = ft_strlen(env->map[j]);
-		if (this_len != len)
+		if (this_len != env->x_size)
 			die(env, "map is not a rectangle");
 		j++;
 	}
-	if (len <= env->x_size)
-		die(env, "map is not a rectangle");
 }
 
-static void	check_borders(t_environment *env, int len)
+static void	check_borders(t_environment *env)
 {
 	int j;
 
 	j = 0;
-	while (j < len)
+	while (j < env->x_size)
 	{
 		if (env->map[0][j] != '1')
 			die(env, "top border not closed");
+
+		j++;
+	}
+	j = 0;
+	while (j < env->y_size)
+	{
+		if (env->map[j][0] != '1' || env->map[j][env->x_size - 1] != '1')
+			die(env, "one of the middle borders is not closed");
 		j++;
 	}
 	j = 0;
 	while (j < env->x_size)
 	{
-		if (env->map[j][0] != '1' || env->map[j][len - 1] != '1')
-			die(env, "one of the middle borders is not closed");
-		j++;
-	}
-	j = 0;
-	while (j < len)
-	{
-		if (env->map[env->x_size - 1][j] != '1')
+		if (env->map[env->y_size - 1][j] != '1')
 			die(env, "botton border not closed");
 		j++;
 	}
@@ -51,16 +50,16 @@ static void	check_letter(t_environment *env, char letter)
 			die(env, "only 5 possible characters: 0, 1, C, E, P");
 }
 
-static void	parse_letters(t_environment *env, int len)
+static void	parse_letters(t_environment *env)
 {
 	int		j;
 	int		k;
 
 	j = 0;
-	while (j < env->x_size)
+	while (j < env->y_size)
 	{
 		k = 0;
-		while (k < len)
+		while (k < env->x_size)
 		{
 			write(1, &(env->map[j][k]), 1);
 			check_letter(env, env->map[j][k]);
@@ -101,9 +100,10 @@ void	parse_map(char* ber, t_environment*	env)
 		}
 	}
 	free_slice(env->map, i, 1000);
-	env->x_size = i;
+	env->y_size = i;
+	env->x_size = ft_strlen(env->map[0]);
 	close(fd);
-	check_if_rectangle(env,ft_strlen(env->map[0]));
-	check_borders(env,ft_strlen(env->map[0]));
-	parse_letters(env, ft_strlen(env->map[0]));
+	check_if_rectangle(env);
+	check_borders(env);
+	parse_letters(env);
 }

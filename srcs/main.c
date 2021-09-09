@@ -8,6 +8,8 @@ int	main(int ac, char **av)
 		terminate("program usage: ./so_long map.ber");
 	env = init_env();
 	parse_map(av[1], env);
+	printf("x size = %d\n", env->x_size);
+	printf("y size = %d\n", env->y_size);
 	init_window(env);
 	mlx_loop(env->mlx);
 

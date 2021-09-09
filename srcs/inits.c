@@ -51,4 +51,5 @@ void	init_window(t_environment *env)
 	env->win = mlx_new_window(env->mlx, size_x, size_y, "So Long");
 	init_asset_imgs(env);
 	mlx_put_image_to_window(env->mlx, env->win, env->i_P.img, 1, 1);
+	start_window(env);
 }

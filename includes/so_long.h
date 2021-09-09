@@ -36,11 +36,11 @@ typedef struct	s_environment
 	int			mov_count;
 	int			x_size;
 	int			y_size;
+	t_img		i_1;
+	t_img		i_0;
 	t_img		i_P;
 	t_img		i_E;
 	t_img		i_C;
-	t_img		i_1;
-	t_img		i_0;
 }				t_environment;
 
 //INITS
@@ -54,5 +54,8 @@ void			free_struct(t_environment *env);
 //PARSE_BER
 void			parse_map(char* ber, t_environment*	env);
 int 			get_next_line(int fd, char **line);
+
+//WINDOW
+void start_window(t_environment *env);
 
 #endif

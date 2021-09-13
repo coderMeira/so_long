@@ -13,8 +13,8 @@ void start_window(t_environment *env)
 		j = 0;
 		while (j < env->x_size)
 		{
-			x = ASSET_HEIGHT * j;
-			y = ASSET_WIDTH * i;
+			x = IMG_HEIGHT * j;
+			y = IMG_WIDTH * i;
 			if (env->map[i][j] == '1')
 				mlx_put_image_to_window(env->mlx, env->win, env->i_1.img, x, y);
 			else if (env->map[i][j] == '0')
@@ -78,10 +78,10 @@ static void	update_img(t_environment *env)
 	int	x_p;
 	int	y_p;
 
-	x_0 = ASSET_HEIGHT * (env->p_x);
-	y_0 = ASSET_WIDTH * (env->p_y);
-	x_p = ASSET_HEIGHT * (env->new_p_x);
-	y_p = ASSET_WIDTH * (env->new_p_y);
+	x_0 = IMG_HEIGHT * (env->p_x);
+	y_0 = IMG_WIDTH * (env->p_y);
+	x_p = IMG_HEIGHT * (env->new_p_x);
+	y_p = IMG_WIDTH * (env->new_p_y);
 
 	mlx_put_image_to_window(env->mlx, env->win, env->i_0.img, x_0, y_0);
 	mlx_put_image_to_window(env->mlx, env->win, env->i_P.img, x_p, y_p);
@@ -90,8 +90,12 @@ static void	update_img(t_environment *env)
 
 int move(int key_code, t_environment *env)
 {
-	// if (key_code == ESC)
-	// 	exit;
+	ft_putnbr_fd(key_code, 1);
+	if (key_code == ESC)
+	{
+		mlx_destroy_window(env->mlx, env->win);
+	 	exit(0);
+	}
 	if (key_code == W || key_code == S || key_code == A || key_code == D)
 	{
 		if (can_move(key_code, env))

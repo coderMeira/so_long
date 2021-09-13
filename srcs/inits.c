@@ -48,8 +48,8 @@ void	init_window(t_environment *env)
 	int	size_x;
 	int	size_y;
 
-	size_x = ASSET_WIDTH * env->x_size;
-	size_y = ASSET_HEIGHT * env->y_size;
+	size_x = IMG_WIDTH * env->x_size;
+	size_y = IMG_HEIGHT * env->y_size;
 
 	env->mlx = mlx_init();
 	env->win = mlx_new_window(env->mlx, size_x, size_y, "So Long");

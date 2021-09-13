@@ -6,8 +6,8 @@
 # include <stdio.h>
 # include "../libs/libft/inc/libft.h"
 
-# define ASSET_HEIGHT	100
-# define ASSET_WIDTH	100
+# define IMG_HEIGHT	100
+# define IMG_WIDTH	100
 # define ESC			53
 # define W		 		13
 # define S		 		1
@@ -30,7 +30,7 @@ typedef struct	s_img {
 	t_vars	mlx_vars;
 }				t_img;
 
-typedef struct	s_environment
+typedef struct	s_envirownment
 {
 	char		**map;
 	void		*mlx;

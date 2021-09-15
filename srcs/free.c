@@ -1,6 +1,6 @@
 #include "../includes/so_long.h"
 
-void	free_struct(t_environment *env)
+static void	free_struct(t_environment *env)
 {
 	if (env)
 	{
@@ -18,4 +18,11 @@ void	die(t_environment *env, char *message)
 {
 	free_struct(env);
 	terminate(message);
+}
+
+void	finish(t_environment *env)
+{
+	free_struct(env);
+	mlx_destroy_window(env->mlx, env->win);
+	exit(0);
 }

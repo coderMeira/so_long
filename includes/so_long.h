@@ -45,6 +45,8 @@ typedef struct	s_envirownment
 	int			p_y;
 	int			new_p_x;
 	int			new_p_y;
+	int			e_x;
+	int			e_y;
 	t_img		i_1;
 	t_img		i_0;
 	t_img		i_P;
@@ -58,7 +60,7 @@ void			init_window(t_environment *env);
 
 //FREE
 void			die(t_environment *env, char *message);
-void			free_struct(t_environment *env);
+void			finish(t_environment *env);
 
 //PARSE_BER
 void			parse_map(char* ber, t_environment*	env);

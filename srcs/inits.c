@@ -18,6 +18,8 @@ t_environment	*init_env(void)
 	env->p_y = 0;
 	env->new_p_x = 0;
 	env->new_p_y = 0;
+	env->e_x = 0;
+	env->e_y = 0;
 	// env->player = 0;
 	// env->exit = 0;
 	// env->consumable = 0;
@@ -41,6 +43,37 @@ static void	init_asset_imgs(t_environment *env)
 	if (!env->i_1.img || !env->i_P.img || !env->i_E.img || !env->i_C.img
 		|| !env->i_0.img)
 		die(env, "mlx_xpm_file_to_image failure");
+}
+
+void start_window(t_environment *env)
+{
+	int	i;
+	int	j;
+	int	x;
+	int y;
+
+	i = 0;
+	while (i < env->y_size)
+	{
+		j = 0;
+		while (j < env->x_size)
+		{
+			x = IMG_HEIGHT * j;
+			y = IMG_WIDTH * i;
+			if (env->map[i][j] == '1')
+				mlx_put_image_to_window(env->mlx, env->win, env->i_1.img, x, y);
+			else if (env->map[i][j] == '0')
+				mlx_put_image_to_window(env->mlx, env->win, env->i_0.img, x, y);
+			else if (env->map[i][j] == 'P')
+				mlx_put_image_to_window(env->mlx, env->win, env->i_P.img, x, y);
+			else if (env->map[i][j] == 'E')
+				mlx_put_image_to_window(env->mlx, env->win, env->i_E.img, x, y);
+			else if (env->map[i][j] == 'C')
+				mlx_put_image_to_window(env->mlx, env->win, env->i_C.img, x, y);
+			j++;
+		}
+		i++;
+	}
 }
 
 void	init_window(t_environment *env)

@@ -49,10 +49,17 @@ static void	check_letter(t_environment *env, char letter, int j, int k)
 {
 	if (letter == 'P')
 	{
-		env->p_x = k;
 		env->p_y = j;
+		env->p_x = k;
+		env->new_p_y = j;
+		env->new_p_x = k;
 	}
-	if (letter != '1' && letter != 'C' &&
+	else if (letter == 'E')
+	{
+		env->e_y = j;
+		env->e_x = k;
+	}
+	else if (letter != '1' && letter != 'C' &&
 		letter != 'E' && letter != '0' && letter != 'P')
 			die(env, "only 5 possible characters: 0, 1, C, E, P");
 }

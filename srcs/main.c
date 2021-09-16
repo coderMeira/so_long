@@ -6,7 +6,7 @@
 /*   By: fmeira <fmeira@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 17:28:14 by fmeira            #+#    #+#             */
-/*   Updated: 2021/09/16 17:31:02 by fmeira           ###   ########.fr       */
+/*   Updated: 2021/09/16 22:18:06 by fmeira           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	main(int ac, char **av)
 
 	if (ac != 2)
 		terminate("program usage: ./so_long map.ber");
+	if (!(ft_strcmp(&(av[1][(ft_strlen(av[1] - 4))]), ".ber")))
+		terminate("map must be a .ber file");
 	env = init_env();
 	parse_map(av[1], env);
 	init_window(env);

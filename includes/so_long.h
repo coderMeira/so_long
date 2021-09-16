@@ -5,18 +5,14 @@
 # include <stdio.h>
 # include "../libs/libft/inc/libft.h"
 
-# define IMG_HEIGHT	100
-# define IMG_WIDTH	100
+# define IMG_HEIGHT	60
+# define IMG_WIDTH	60
 # define ESC			53
 # define W		 		13
 # define S		 		1
 # define D			 	2
 # define A				0
 
-typedef struct s_vars {
-	void	*mlx;
-	void	*win;
-}				t_vars;
 
 typedef struct s_img {
 	void	*img;
@@ -26,7 +22,6 @@ typedef struct s_img {
 	int		endian;
 	int		img_width;
 	int		img_height;
-	t_vars	mlx_vars;
 }				t_img;
 
 typedef struct s_envirownment
@@ -51,6 +46,7 @@ typedef struct s_envirownment
 	t_img		i_p;
 	t_img		i_e;
 	t_img		i_c;
+	t_img		i_x;
 }				t_environment;
 
 //INITS

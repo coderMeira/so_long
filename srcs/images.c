@@ -86,6 +86,9 @@ static void	update_img(t_environment *env)
 	y_p = IMG_WIDTH * (env->new_p_y);
 	mlx_put_image_to_window(env->mlx, env->win, env->i_0.img, x_0, y_0);
 	mlx_put_image_to_window(env->mlx, env->win, env->i_p.img, x_p, y_p);
+	if (env->c_count == 0)
+		mlx_put_image_to_window(env->mlx, env->win, env->i_e.img,
+			(env->e_x * IMG_WIDTH), (env->e_y * IMG_HEIGHT));
 	env->p_y = env->new_p_y;
 	env->p_x = env->new_p_x;
 }

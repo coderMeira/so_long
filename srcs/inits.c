@@ -36,6 +36,8 @@ static void	init_asset_imgs(t_environment *env)
 			"./so_long_imgs/C.xpm", &env->i_c.img_width, &env->i_c.img_height);
 	env->i_0.img = mlx_xpm_file_to_image(env->mlx,
 			"./so_long_imgs/0.xpm", &env->i_0.img_width, &env->i_0.img_height);
+	env->i_x.img = mlx_xpm_file_to_image(env->mlx,
+			"./so_long_imgs/X.xpm", &env->i_x.img_width, &env->i_x.img_height);
 	if (!env->i_1.img || !env->i_p.img || !env->i_e.img || !env->i_c.img
 		|| !env->i_0.img)
 		die(env, "mlx_xpm_file_to_image failure");
@@ -63,7 +65,7 @@ void	start_window(t_environment *env)
 			else if (env->map[i][j] == 'P')
 				mlx_put_image_to_window(env->mlx, env->win, env->i_p.img, x, y);
 			else if (env->map[i][j] == 'E')
-				mlx_put_image_to_window(env->mlx, env->win, env->i_e.img, x, y);
+				mlx_put_image_to_window(env->mlx, env->win, env->i_x.img, x, y);
 			else if (env->map[i][j] == 'C')
 				mlx_put_image_to_window(env->mlx, env->win, env->i_c.img, x, y);
 		}

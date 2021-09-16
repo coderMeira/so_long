@@ -21,8 +21,8 @@ all: $(NAME)
 $(NAME): $(LIBFT_EXEC) $(OBJS)
 	@echo "Compiling ${NAME}"
 	gcc $(CFLAGS) $(LIBFT_EXEC) $(OBJS) -o $(NAME) $(LINKS)
-	mkdir -p obj
-	mv ${OBJS} obj
+	@mkdir -p obj
+	@mv ${OBJS} obj
 	@echo "Ready to use!"
 
 $(LIBFT_EXEC):

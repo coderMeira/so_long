@@ -1,4 +1,3 @@
-
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
@@ -14,12 +13,12 @@
 # define D			 	2
 # define A				0
 
-typedef struct	s_vars {
+typedef struct s_vars {
 	void	*mlx;
 	void	*win;
 }				t_vars;
 
-typedef struct	s_img {
+typedef struct s_img {
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
@@ -30,14 +29,14 @@ typedef struct	s_img {
 	t_vars	mlx_vars;
 }				t_img;
 
-typedef struct	s_envirownment
+typedef struct s_envirownment
 {
 	char		**map;
 	void		*mlx;
 	void		*win;
-	int			P_count;
-	int			E_count;
-	int			C_count;
+	int			p_count;
+	int			e_count;
+	int			c_count;
 	int			mov_count;
 	int			x_size;
 	int			y_size;
@@ -49,9 +48,9 @@ typedef struct	s_envirownment
 	int			e_y;
 	t_img		i_1;
 	t_img		i_0;
-	t_img		i_P;
-	t_img		i_E;
-	t_img		i_C;
+	t_img		i_p;
+	t_img		i_e;
+	t_img		i_c;
 }				t_environment;
 
 //INITS
@@ -60,15 +59,14 @@ void			init_window(t_environment *env);
 
 //FREE
 void			die(t_environment *env, char *message);
-void			finish(t_environment *env);
+int				finish(t_environment *env);
 
 //PARSE_BER
-void			parse_map(char* ber, t_environment*	env);
-int 			get_next_line(int fd, char **line);
+void			parse_map(char *ber, t_environment *env);
+int				get_next_line(int fd, char **line);
 
 //WINDOW
 void			start_window(t_environment *env);
 int				move(int key_code, t_environment *env);
-
 
 #endif

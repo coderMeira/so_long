@@ -9,10 +9,8 @@ int	main(int ac, char **av)
 	env = init_env();
 	parse_map(av[1], env);
 	init_window(env);
-	printf("p y = %d\np x = %d\n", env->p_y, env->p_x);
 	mlx_key_hook(env->win, &move, env);
-	//mlx_hook(env->win,)
+	mlx_hook(env->win, 17, 1L << 17, &finish, env);
 	mlx_loop(env->mlx);
-
 	return (0);
 }

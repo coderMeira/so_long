@@ -3,31 +3,30 @@
 static t_bool	not_illegal_exit(int key_code, t_environment *env)
 {
 	if (key_code == W)
-		{
-			if (env->map[(env->p_y - 1)][env->p_x] == 'E' &&
-				env->C_count > 0)
-				return (false);
-		}
-		else if (key_code == S)
-		{
-			if (env->map[(env->p_y + 1)][env->p_x] == 'E' &&
-				env->C_count > 0)
-				return (false);
-		}
-		else if (key_code == A)
-		{
-			if (env->map[env->p_y][(env->p_x - 1)] == 'E' &&
-				env->C_count > 0)
-				return (false);
-		}
-		else if (key_code == D)
-		{
-			if (env->map[env->p_y][env->p_x + 1] == 'E' &&
-				env->C_count > 0)
-				return (false);
-		}
+	{
+		if (env->map[(env->p_y - 1)][env->p_x] == 'E' &&
+			env->c_count > 0)
+			return (false);
+	}
+	else if (key_code == S)
+	{
+		if (env->map[(env->p_y + 1)][env->p_x] == 'E' &&
+			env->c_count > 0)
+			return (false);
+	}
+	else if (key_code == A)
+	{
+		if (env->map[env->p_y][(env->p_x - 1)] == 'E' &&
+			env->c_count > 0)
+			return (false);
+	}
+	else if (key_code == D)
+	{
+		if (env->map[env->p_y][env->p_x + 1] == 'E' &&
+			env->c_count > 0)
+			return (false);
+	}
 	return (true);
-
 }
 
 static t_bool	can_move(int key_code, t_environment *env)
@@ -69,7 +68,7 @@ static void	update_matrix_and_pos(int key_code, t_environment *env)
 	else if (key_code == D)
 		env->new_p_x = (env->p_x + 1);
 	if (env->map[env->new_p_y][env->new_p_x] == 'C')
-		env->C_count--;
+		env->c_count--;
 	env->map[env->new_p_y][env->new_p_x] = 'P';
 	env->map[env->p_y][env->p_x] = '0';
 	printf("p y = %d\np x = %d\n", env->p_y, env->p_x);
@@ -86,14 +85,13 @@ static void	update_img(t_environment *env)
 	y_0 = IMG_WIDTH * (env->p_y);
 	x_p = IMG_HEIGHT * (env->new_p_x);
 	y_p = IMG_WIDTH * (env->new_p_y);
-
 	mlx_put_image_to_window(env->mlx, env->win, env->i_0.img, x_0, y_0);
-	mlx_put_image_to_window(env->mlx, env->win, env->i_P.img, x_p, y_p);
+	mlx_put_image_to_window(env->mlx, env->win, env->i_p.img, x_p, y_p);
 	env->p_y = env->new_p_y;
 	env->p_x = env->new_p_x;
 }
 
-int move(int key_code, t_environment *env)
+int	move(int key_code, t_environment *env)
 {
 	ft_putnbr_fd(key_code, 1);
 	ft_putchar_fd('\n', 1);
@@ -107,8 +105,8 @@ int move(int key_code, t_environment *env)
 			update_img(env);
 			ft_putnbr_fd(++env->mov_count, 1);
 			ft_putchar_fd('\n', 1);
-			if (env->p_x == env->e_x && env->p_y == env->e_y &&
-				env->C_count == 0)
+			if (env->p_x == env->e_x && env->p_y == env->e_y
+				&& env->c_count == 0)
 				finish(env);
 		}
 	}

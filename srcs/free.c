@@ -7,11 +7,7 @@ static void	free_struct(t_environment *env)
 		if (env->map)
 		{
 			while (env->y_size >= 0)
-			{
-				ft_putnbr_fd(env->y_size, 1);
-				ft_putchar_fd('\n', 1);
 				free(env->map[env->y_size--]);
-			}
 		}
 		free(env);
 		env = NULL;

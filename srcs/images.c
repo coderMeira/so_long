@@ -71,7 +71,6 @@ static void	update_matrix_and_pos(int key_code, t_environment *env)
 		env->c_count--;
 	env->map[env->new_p_y][env->new_p_x] = 'P';
 	env->map[env->p_y][env->p_x] = '0';
-	printf("p y = %d\np x = %d\n", env->p_y, env->p_x);
 }
 
 static void	update_img(t_environment *env)
@@ -93,8 +92,6 @@ static void	update_img(t_environment *env)
 
 int	move(int key_code, t_environment *env)
 {
-	ft_putnbr_fd(key_code, 1);
-	ft_putchar_fd('\n', 1);
 	if (key_code == ESC)
 		finish(env);
 	if (key_code == W || key_code == S || key_code == A || key_code == D)

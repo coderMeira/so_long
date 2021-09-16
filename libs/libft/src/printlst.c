@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   printlst.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmeira <fmeira@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/16 17:32:59 by fmeira            #+#    #+#             */
-/*   Updated: 2021/09/16 17:33:00 by fmeira           ###   ########.fr       */
+/*   Created: 2021/09/16 17:30:10 by fmeira            #+#    #+#             */
+/*   Updated: 2021/09/16 17:30:11 by fmeira           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/libft.h"
 
-t_bool	ft_strcmp(char *newstr, char *original)
+void	ft_printlst(t_list *a)
 {
-	size_t	i;
-	size_t	len;
+	t_list	*current;
+	int		*p;
 
-	i = 0;
-	len = ft_strlen(original);
-	while (i < len)
+	current = NULL;
+	p = current -> content;
+	current = a;
+	while (current)
 	{
-		if (original[i] != newstr[i])
-			return (false);
-		i++;
+		printf("%d\n", *p);
+		current = current -> next;
 	}
-	return (true);
 }

@@ -1,32 +1,42 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   my_get_next_line.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fmeira <fmeira@student.42lisboa.com>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/09/16 17:26:26 by fmeira            #+#    #+#             */
+/*   Updated: 2021/09/16 17:30:16 by fmeira           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/libft.h"
 
-int get_next_line(int fd, char **line)
+int	get_next_line(int fd, char **line)
 {
-	int		i;
-	int		r;
-	int		l;
-	char	c;
-	char 	*tmp;
+	t_gnl	gnl;
 
-	r = 0;
-	l = 1;
-	if (!(*line = malloc(l)))
+	gnl.l = 1;
+	*line = ft_calloc(sizeof(char), gnl.l);
+	if (!(*line))
 		return (-1);
-	(*line)[0] = 0;
-	while ((r = read(fd, &c, 1)) && l++ && c != '\n')
+	gnl.r = read(fd, &gnl.c, 1);
+	while (gnl.r && gnl.l++ && gnl.c != '\n')
 	{
-		if (!(tmp = malloc(l)))
+		gnl.tmp = malloc(gnl.l);
+		if (!(gnl.tmp))
 		{
 			free(*line);
 			return (-1);
 		}
-		i = -1;
-		while (++i < l - 2)
-			tmp[i] = (*line)[i];
-		tmp[i] = c;
-		tmp[i + 1] = 0;
+		gnl.i = -1;
+		while (++gnl.i < gnl.l - 2)
+			gnl.tmp[gnl.i] = (*line)[gnl.i];
+		gnl.tmp[gnl.i] = gnl.c;
+		gnl.tmp[gnl.i + 1] = 0;
 		free(*line);
-		*line = tmp;
+		*line = gnl.tmp;
+		gnl.r = read(fd, &gnl.c, 1);
 	}
-	return (r);
+	return (gnl.r);
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   free.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fmeira <fmeira@student.42lisboa.com>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/09/16 17:28:12 by fmeira            #+#    #+#             */
+/*   Updated: 2021/09/16 17:29:17 by fmeira           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/so_long.h"
 
 static void	free_struct(t_environment *env)
@@ -9,7 +21,7 @@ static void	free_struct(t_environment *env)
 			while (env->y_size >= 0)
 				free(env->map[env->y_size--]);
 		}
-		free(env);
+		free(env->map);
 		env = NULL;
 	}
 }
@@ -23,18 +35,12 @@ void	die(t_environment *env, char *message)
 int	finish(t_environment *env)
 {
 	free_struct(env);
-	ft_putnbr_fd(1111, 1);
-	ft_putchar_fd('\n', 1);
 	mlx_destroy_image(env->mlx, env->i_1.img);
-	ft_putnbr_fd(2222, 1);
-	ft_putchar_fd('\n', 1);
 	mlx_destroy_image(env->mlx, env->i_0.img);
 	mlx_destroy_image(env->mlx, env->i_p.img);
 	mlx_destroy_image(env->mlx, env->i_e.img);
 	mlx_destroy_image(env->mlx, env->i_c.img);
 	mlx_destroy_window(env->mlx, env->win);
-	ft_putnbr_fd(3333, 1);
-	ft_putchar_fd('\n', 1);
 	exit(0);
 	return (1);
 }

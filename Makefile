@@ -1,4 +1,8 @@
 
+# -*- MakeFile -*-
+
+MAKEFLAGS	+= -s
+
 CFLAGS		= -Wall -Werror -Wextra -g
 
 NAME		= so_long
@@ -19,26 +23,26 @@ LINKS 		= -I $(LIBFT_DIR) -L $(LIBFT_DIR) \
 all: $(NAME)
 
 $(NAME): $(LIBFT_EXEC) $(OBJS)
-	@echo "Compiling ${NAME}"
+	echo "Compiling ${NAME}"
 	gcc $(CFLAGS) $(LIBFT_EXEC) $(OBJS) -o $(NAME) $(LINKS)
-	@mkdir -p obj
-	@mv ${OBJS} obj
-	@echo "Ready to use!"
+	mkdir -p obj
+	mv ${OBJS} obj
+	echo "Ready to use!"
 
 $(LIBFT_EXEC):
-	@echo "Compiling libft"
-	@${MAKE} -C $(LIBFT_DIR)
-	@echo "Libft compiled"
+	echo "Compiling libft"
+	${MAKE} -C $(LIBFT_DIR)
+	echo "Libft compiled"
 
 clean:
-	@rm -rf obj ${OBJS}
-	@${MAKE} -C $(LIBFT_DIR) fclean
-	@echo "Objects cleaned"
+	rm -rf obj ${OBJS}
+	${MAKE} -C $(LIBFT_DIR) fclean
+	echo "Objects cleaned"
 
 fclean:
-	@rm -rf obj ${OBJS} $(NAME)
-	@${MAKE} -C $(LIBFT_DIR) fclean
-	@echo "${NAME} and objects cleaned"
+	rm -rf obj ${OBJS} $(NAME)
+	${MAKE} -C $(LIBFT_DIR) fclean
+	echo "${NAME} and objects cleaned"
 
 re: fclean all
 

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fmeira <fmeira@student.42lisboa.com>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/09/17 00:52:21 by fmeira            #+#    #+#             */
+/*   Updated: 2021/09/17 01:23:43 by fmeira           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
@@ -12,7 +24,6 @@
 # define S		 		1
 # define D			 	2
 # define A				0
-
 
 typedef struct s_img {
 	void	*img;
@@ -64,5 +75,9 @@ int				get_next_line(int fd, char **line);
 //WINDOW
 void			start_window(t_environment *env);
 int				move(int key_code, t_environment *env);
+
+//IMGS
+t_bool			legal_exit(int key_code, t_environment *env);
+void			open_doors(t_environment *env);
 
 #endif

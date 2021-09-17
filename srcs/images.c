@@ -6,7 +6,7 @@
 /*   By: fmeira <fmeira@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 17:29:44 by fmeira            #+#    #+#             */
-/*   Updated: 2021/09/16 17:30:23 by fmeira           ###   ########.fr       */
+/*   Updated: 2021/09/17 01:23:52 by fmeira           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,8 +99,7 @@ static void	update_img(t_environment *env)
 	mlx_put_image_to_window(env->mlx, env->win, env->i_0.img, x_0, y_0);
 	mlx_put_image_to_window(env->mlx, env->win, env->i_p.img, x_p, y_p);
 	if (env->c_count == 0)
-		mlx_put_image_to_window(env->mlx, env->win, env->i_e.img,
-			(env->e_x * IMG_WIDTH), (env->e_y * IMG_HEIGHT));
+		open_doors(env);
 	env->p_y = env->new_p_y;
 	env->p_x = env->new_p_x;
 }
@@ -117,8 +116,7 @@ int	move(int key_code, t_environment *env)
 			update_img(env);
 			ft_putnbr_fd(++env->mov_count, 1);
 			ft_putchar_fd('\n', 1);
-			if (env->p_x == env->e_x && env->p_y == env->e_y
-				&& env->c_count == 0)
+			if (legal_exit(key_code, env))
 				finish(env);
 		}
 	}

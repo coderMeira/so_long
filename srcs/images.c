@@ -6,7 +6,7 @@
 /*   By: fmeira <fmeira@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 17:29:44 by fmeira            #+#    #+#             */
-/*   Updated: 2021/09/17 01:23:52 by fmeira           ###   ########.fr       */
+/*   Updated: 2021/09/23 18:03:48 by fmeira           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,12 +112,12 @@ int	move(int key_code, t_environment *env)
 	{
 		if (can_move(key_code, env))
 		{
+			if (legal_exit(key_code, env))
+				finish(env);
 			update_matrix_and_pos(key_code, env);
 			update_img(env);
 			ft_putnbr_fd(++env->mov_count, 1);
 			ft_putchar_fd('\n', 1);
-			if (legal_exit(key_code, env))
-				finish(env);
 		}
 	}
 	return (0);

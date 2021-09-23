@@ -6,7 +6,7 @@
 /*   By: fmeira <fmeira@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 17:28:23 by fmeira            #+#    #+#             */
-/*   Updated: 2021/09/16 17:31:00 by fmeira           ###   ########.fr       */
+/*   Updated: 2021/09/23 18:09:31 by fmeira           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ static void	parse_letters(t_environment *env)
 		j++;
 	}
 	env->y_size = j;
-	if (!(env->c_count) || !(env->e_count) || env->p_count > 1)
+	if (!(env->c_count) || !(env->e_count) || env->p_count != 1)
 		die(env, "map needs to have at least 1 'C', 1 'E', and 1 'P' max");
 }
 

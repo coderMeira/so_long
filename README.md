@@ -1,4 +1,4 @@
-#SO_LONG
+# SO_LONG
 ![](https://img.shields.io/badge/Language-C-blue)
 ![](https://img.shields.io/badge/School-42-black)
 
